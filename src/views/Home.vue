@@ -26,17 +26,9 @@
                 <span>导航一</span>
               </template>
               <el-menu-item-group>
-                <template slot="title">分组一</template>
                 <el-menu-item index="1-1">选项1</el-menu-item>
                 <el-menu-item index="1-2">选项2</el-menu-item>
               </el-menu-item-group>
-              <el-menu-item-group title="分组2">
-                <el-menu-item index="1-3">选项3</el-menu-item>
-              </el-menu-item-group>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
             </el-submenu>
             <el-menu-item index="2">
               <i class="el-icon-menu"></i>
@@ -55,10 +47,10 @@
       </el-aside>
       <el-container>
         <el-main class="main">
-          <div class="tab-list flex-fs">
+          <el-row :span="24" class="tab-list flex-fs">
             <i @click="changeAsidebarStatus" :class="asidebarStatus? 'el-icon-s-fold' : 'el-icon-s-unfold'"></i>
             <div class="mgl10">面包屑地址</div>
-          </div>
+          </el-row>
           <div>页面模块</div>
         </el-main>
         <el-footer class="footer">
@@ -116,6 +108,13 @@ export default {
  .aside .el-menu {
    border: none;
  } 
+ .tab-list{
+   background-color: #fff;
+   height: 50px;
+ }
+ .el-main{
+   padding: 0;
+ }
  .main{
    background-color: yellow;
  }
