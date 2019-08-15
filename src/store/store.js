@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import loginModule from './modules/login';
+import routeTag from './modules/routeTag'
+import tagsView from './modules/tagsView'
 
 Vue.use(Vuex)
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
 
   },
   modules : {
-    loginModule: loginModule,
+    routeTag: routeTag,
+    tagsView: tagsView,
   }
 })

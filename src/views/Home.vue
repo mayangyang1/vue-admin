@@ -1,61 +1,24 @@
 <template>
   <el-container style="height:100vh">
     <el-header class="header">
-      <div class="flex-sb">
-        <div class="header-left flex-fs">
-          <img src="../assets/logo.png" width="50px" alt="">
-          <div>上海融链科技有限公司</div>
-        </div>
-        <div class="header-right">个人信息模块</div>
-      </div>
+      <nav-bar></nav-bar>
     </el-header>
     <el-container>
       <el-aside class="aside" :width="asidebarStatus? '150px' : '49px'" >
-        <el-col :span="24">
-          <el-menu
-            default-active="2"
-            class="el-menu-vertical-demo"
-            background-color="#545c64"
-            text-color="#fff"
-            active-text-color="#ffd04b"
-            @open="handleOpen"
-            @close="handleClose">
-            <el-submenu index="1">
-              <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>导航一</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              <span slot="title">导航二</span>
-            </el-menu-item>
-            <el-menu-item index="3">
-              <i class="el-icon-document"></i>
-              <span slot="title">导航三</span>
-            </el-menu-item>
-            <el-menu-item index="4">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航四</span>
-            </el-menu-item>
-          </el-menu>
-        </el-col>
+        <aside-bar></aside-bar>
+      </el-aside>
+      <el-aside width="18px" class="flod">
+        <div class="arrow">
+          <span @click="changeAsidebarStatus" :class="asidebarStatus? 'el-icon-caret-left' : 'el-icon-caret-right'"></span>
+        </div>
       </el-aside>
       <el-container>
         <el-main class="main">
-          <el-row :span="24" class="tab-list flex-fs">
-            <i @click="changeAsidebarStatus" :class="asidebarStatus? 'el-icon-s-fold' : 'el-icon-s-unfold'"></i>
-            <div class="mgl10">面包屑地址</div>
-          </el-row>
-          <div>页面模块</div>
+          <tag-bar></tag-bar>
+          <app-page-view></app-page-view>
         </el-main>
         <el-footer class="footer">
-         footer
-
+         <footer-bar></footer-bar>
         </el-footer>
       </el-container>
     </el-container>
@@ -64,7 +27,11 @@
 
 <script>
 // @ is an alias to /src
-import {} from 'element-ui'
+import PageView from './PageView';
+import NavBar from '../layout/NavBar';
+import Aside from '../layout/Aside';
+import Footer from '../layout/Footer';
+import TagBar from '../layout/TagBar';
 
 export default {
   name: 'home',
@@ -74,7 +41,11 @@ export default {
     }
   },
   components: {
-
+    "app-page-view" : PageView,
+    "nav-bar" : NavBar,
+    'aside-bar' : Aside,
+    'footer-bar' : Footer,
+    'tag-bar' : TagBar,
   },
   computed: {
     asidebarStatus(){ 
@@ -86,12 +57,7 @@ export default {
     changeAsidebarStatus() {
       this.$store.commit('changeAsidebarStatus');
     },
-    handleOpen(data) {
-      console.log(data);
-    },
-    handleClose(data) {
-      console.log(data);
-    }
+    
   }
 }
 </script>
@@ -105,20 +71,24 @@ export default {
  .aside{
    background-color: #545c64;
  }
- .aside .el-menu {
-   border: none;
- } 
- .tab-list{
-   background-color: #fff;
-   height: 50px;
- }
+
  .el-main{
    padding: 0;
  }
  .main{
-   background-color: yellow;
+   background-color: #fff;
  }
  .footer{
    background-color: #f2f2f2;
+   height: 40px!important;
+ }
+ .flod{
+   position: relative;
+   border-right: 1px solid #f2f2f2;
+ }
+ .arrow {
+   position: absolute;
+    top: 50%;
+    left: 0px;
  }
 </style>
