@@ -13,7 +13,7 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: '/',
+          path: '',
           name: 'testPage',
           component: () => import( /* webpackChunkName: "about" */ './views/Index.vue'),
           meta: {
