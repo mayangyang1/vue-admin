@@ -1,8 +1,12 @@
 <template>
     <div>
-        <div><input v-model="userName" placeholder="请输入用户名" type="text"></div>
-        <div><input v-model="password" placeholder="请输入密码"  type="password"></div>
+        <div class="logos">
+            <img src="../assets/logo.png" alt="">
+        </div>
+        <div class="input"><input v-model="userName" placeholder="请输入用户名" type="text"></div>
+        <div class="input"><input v-model="password" placeholder="请输入密码"  type="password"></div>
         <div><button @click="login">确定</button></div>
+        <span>账号:123 密码:123</span>
     </div>
 </template>
 
@@ -29,3 +33,21 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+ .logos img{
+     margin-top: 100px;
+ }
+ .input input {
+     height: 30px;
+     margin: 6px 0;
+     width: 200px;
+     padding: 0 4px;
+ }
+ button{
+     width: 200px;
+     height: 40px;
+     margin-top: 10px;
+    font-size: 16px;
+ }
+</style>

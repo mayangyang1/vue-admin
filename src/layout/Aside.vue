@@ -11,11 +11,11 @@
             <router-link :to="{name: 'testPage'}">
                 <el-menu-item index="1">
                     <i class="el-icon-help"></i>
-                    <span slot="title">首页</span>
+                    <span slot="title">用户</span>
                 </el-menu-item>
             </router-link>
             <router-link :to="{name: 'resource'}">
-                <el-menu-item index="resource">
+                <el-menu-item index="2">
                     <i class="el-icon-setting"></i>
                     <span slot="title">货源详情</span>
                 </el-menu-item>
@@ -28,10 +28,8 @@
 export default {
     methods: {
         handleOpen(data) {
-      console.log(data);
         },
         handleClose(data) {
-        console.log(data);
         }
     }
 }
