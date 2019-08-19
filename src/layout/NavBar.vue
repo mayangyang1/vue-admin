@@ -21,7 +21,7 @@
 export default {
     data() {
         return {
-            avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+            avatarUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
         }
     },
     methods:{
@@ -36,3 +36,12 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+ .header-left img{
+     margin-right: 4px;
+     border-radius: 50%;
+     height: 50px;
+     width: 50px;
+ }
+</style>

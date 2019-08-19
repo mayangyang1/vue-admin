@@ -31,6 +31,9 @@ axios.interceptors.response.use(res => {
   if(res.data.code === 401) {
     router.push('/login');
   }
+  if(res.data.code === 500) {
+    vm.$message.error(res.data.content);
+  }
   return res.data;
 }, err => {
   return Promise.reject(err);
@@ -38,7 +41,7 @@ axios.interceptors.response.use(res => {
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
-new Vue({
+var vm = new Vue({
   router,
   store,
   render: h => h(App)
