@@ -2,7 +2,7 @@
     <el-row :span="24" class="tab-list flex-fs">
         <router-link v-for="item in tagsViewList" :key="item.name" :to="{ 'path': item.path, 'query': item.query, 'fullPath': item.fullPaht}">
             <div class="tag-view" :class="isTagActive(item)? 'main-bg-color' : ''">
-                <span>{{item.meta.title? item.meta.title : tiem.name}}</span>
+                <span>{{item.meta.title? item.meta.title : item.name}}</span>
                 <i class="el-icon-close" @click.prevent="closeTag(item)"></i>
             </div>
         </router-link>

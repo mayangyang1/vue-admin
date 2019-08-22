@@ -12,5 +12,13 @@ module.exports = {
                 }
             }
         }
-    }
+    },
+    configureWebpack: {
+        name: name,
+        resolve: {
+            alias: {
+                '@': resolve('src')
+            }
+        }
+    },
 }

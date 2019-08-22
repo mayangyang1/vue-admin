@@ -19,23 +19,31 @@ export default new Router({
           meta: {
             keep: true,
             title: '首页',
-            name: 'testPage'
+            name: 'testPage',
+            icon: 'el-icon-s-home'
           }
         },
         {
           path: '/resource',
           name: 'resource',
           component: () => import( /* webpackChunkName: "about" */ './views/Resource.vue'),
-          meta: {
-            keep: true,
-            title: '货源',
-            name: 'resource'
-          }
+           meta: {
+             keep: true,
+             title: '货源',
+             name: 'resource',
+             icon: 'el-icon-setting'
+           }
         },
         {
           path: '/404Page',
-          name:'404Page',
-          component: () => import('./views/404Page.vue')
+          name:'UnFindPage',
+          component: () => import('./views/UnFindPage.vue'),
+           meta: {
+             keep: true,
+             title: '404',
+             name: 'UnFindPage',
+             icon: 'el-icon-help'
+           }
         }
       ]
     },

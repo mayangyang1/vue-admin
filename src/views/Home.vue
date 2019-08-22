@@ -29,7 +29,7 @@
 // @ is an alias to /src
 import PageView from './PageView';
 import NavBar from '../layout/NavBar';
-import Aside from '../layout/Aside';
+import Aside from '../layout/sideBar/Aside';
 import Footer from '../layout/Footer';
 import TagBar from '../layout/TagBar';
 
@@ -90,5 +90,6 @@ export default {
    position: absolute;
     top: 50%;
     left: 0px;
+    cursor: pointer;
  }
 </style>
