@@ -17,9 +17,9 @@
           <tag-bar></tag-bar>
           <app-page-view></app-page-view>
         </el-main>
-        <el-footer class="footer">
+        <!-- <el-footer class="footer">
          <footer-bar></footer-bar>
-        </el-footer>
+        </el-footer> -->
       </el-container>
     </el-container>
   </el-container>

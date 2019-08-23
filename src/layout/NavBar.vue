@@ -1,7 +1,7 @@
 <template>
     <div class="flex-sb" style="height:100%">
         <div class="header-left flex-fs">
-            <img src="../assets/logo.png" width="50px" alt="">
+            <img src="../assets/images/logo.png" width="50px" alt="">
             <div>行天下物流有限公司</div>
         </div>
         

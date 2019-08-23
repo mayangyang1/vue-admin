@@ -2,7 +2,7 @@
     <div>
         <el-card class="login-card">
             <div class="logos">
-                <img src="../assets/logo.png" alt="">
+                <img src="../assets/images/logo.png" alt="">
             </div>
             <div class="input"><input v-model="userName" placeholder="请输入用户名" type="text"></div>
             <div class="input"><input v-model="password" placeholder="请输入密码"  type="password"></div>
