@@ -1,6 +1,5 @@
 <template>
     <div>
-        <input type="text">
         <h2>图片上传功能</h2>
         <div>
             <el-upload

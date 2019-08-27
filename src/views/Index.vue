@@ -5,18 +5,34 @@
         border
         style="width: 100%">
         <el-table-column
-        prop="date"
-        label="日期"
+        prop="_id"
+        label="code"
+        width="220">
+        </el-table-column>
+        <el-table-column
+        prop="goodsName"
+        label="货物名称"
         width="180">
         </el-table-column>
         <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
+        prop="company"
+        label="公司">
+        </el-table-column>
+        <el-table-column
+        prop="routeName"
+        label="线路名称">
         </el-table-column>
         <el-table-column
         prop="address"
         label="地址">
+        </el-table-column>
+        <el-table-column
+        prop="perWeight"
+        label="预装量(吨)">
+        </el-table-column>
+        <el-table-column
+        prop="goodsWeight"
+        label="货物重量(吨)">
         </el-table-column>
      </el-table>
     </div>
@@ -26,48 +42,20 @@ export default {
     name: 'testPage',
     data() {
         return {
-            tableData: [{
-                date: '2016-05-03',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '2016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '2016-05-04',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '2016-05-01',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '2016-05-08',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '2016-05-06',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '2016-05-07',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            },{
-                date: '2016-05-07',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            },{
-                date: '2016-05-07',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            },{
-                date: '2016-05-07',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            }]
+            tableData: []
         }
+    },
+    methods:{
+        getWaybillList() {
+            this.$axios.get('/api/getGoodsWaybillList').then((res) => {
+                if(res.code === 200) {
+                    this.tableData = res.content;
+                }
+            })
+        },
+    },
+    created() {
+        this.getWaybillList();
     }
 }
 </script>

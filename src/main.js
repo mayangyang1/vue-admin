@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import ElementUI from 'element-ui';
+import {Loading, Container, Header, Aside, Main, Card, Message, Col, Menu, Submenu, MenuItem, Dropdown, Avatar, DropdownMenu, DropdownItem, Row, Table, TableColumn, Upload} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
 import router from './router'
@@ -20,7 +20,11 @@ router.beforeEach((to, from, next) => {
 })
 
 //axios 请求拦截器处理请求数据
+let loadingInstance;
 axios.interceptors.request.use(config => {
+  loadingInstance = Loading.service({
+    fullscreen: true
+  })
   const token = localStorage.getItem('token');
   config.headers.common['Authorization'] = 'Bearer ' + token;
   return config;
@@ -28,20 +32,45 @@ axios.interceptors.request.use(config => {
 
 //axios 响应拦截器处理响应数据
 axios.interceptors.response.use(res => {
-  if(res.data.code === 401) {
-    router.push('/login');
-  }
+  loadingInstance.close();
+  // if(res.data.code === 401) {
+  //   router.push('/login');
+  // }
   if(res.data.code === 500) {
-    vm.$message.error(res.data.content);
+    Message.error(res.data.content);
   }
   return res.data;
 }, err => {
+  if (err.response.status === 401) {
+    router.push('/login');
+  }
+  if(err.response.status === 500) {
+    Message.error('系统错误');
+  }
+  loadingInstance.close();
   return Promise.reject(err);
 })
 
 Vue.config.productionTip = false
-Vue.use(ElementUI);
-var vm = new Vue({
+Vue.use(Loading);
+Vue.use(Container);
+Vue.use(Header);
+Vue.use(Aside);
+Vue.use(Main);
+Vue.use(Card);
+Vue.use(Col);
+Vue.use(Menu);
+Vue.use(Submenu);
+Vue.use(MenuItem);
+Vue.use(Dropdown);
+Vue.use(Avatar);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(Row);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Upload);
+new Vue({
   router,
   store,
   render: h => h(App)

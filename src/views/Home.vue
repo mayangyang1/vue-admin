@@ -30,7 +30,6 @@
 import PageView from './PageView';
 import NavBar from '../layout/NavBar';
 import Aside from '../layout/sideBar/Aside';
-import Footer from '../layout/Footer';
 import TagBar from '../layout/TagBar';
 
 export default {
@@ -44,7 +43,6 @@ export default {
     "app-page-view" : PageView,
     "nav-bar" : NavBar,
     'aside-bar' : Aside,
-    'footer-bar' : Footer,
     'tag-bar' : TagBar,
   },
   computed: {
@@ -63,7 +61,8 @@ export default {
 </script>
 <style scoped>
  .header{
-   background-color: #f2f2f2;
+   background-color: #fff;
+   border-bottom: 1px solid #ccc;
  }
  .header-left{
    height: 60px;
