@@ -1,11 +1,36 @@
 import Vue from 'vue'
-import {Loading, Container, Header, Aside, Main, Card, Message, Col, Menu, Submenu, MenuItem, Dropdown, Avatar, DropdownMenu, DropdownItem, Row, Table, TableColumn, Upload} from 'element-ui';
+import {
+  Loading,
+  Container,
+  Header,
+  Aside, 
+  Main, 
+  Card, 
+  Message, 
+  Col, 
+  Menu, 
+  Submenu, 
+  MenuItem, 
+  Dropdown, 
+  Avatar, 
+  DropdownMenu, 
+  DropdownItem, 
+  Row, 
+  Table, 
+  TableColumn, 
+  Upload, 
+  Button,
+  MessageBox,
+  Pagination,
+
+} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
 import router from './router'
 import store from './store/store'
 import axios from 'axios'
-Vue.prototype.$axios = axios;
+
+
 
 router.beforeEach((to, from, next) => {
   if(localStorage.getItem("token")){
@@ -70,6 +95,16 @@ Vue.use(Row);
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Upload);
+Vue.use(Button);
+Vue.use(Pagination);
+
+Vue.prototype.$axios = axios;
+Vue.prototype.$message = Message;
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;
+
+
 new Vue({
   router,
   store,

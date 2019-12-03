@@ -32,7 +32,7 @@ export default {
                 return this.$message.error('请输入密码');
             }
             this.$axios.post('/api/login',{
-             name: this.userName, password: this.password
+             phone: this.userName, password: this.password
             }).then(res => {
                 if(res.code === 200) {
                     localStorage.setItem('token', res.content);
