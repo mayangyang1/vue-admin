@@ -56,7 +56,7 @@ export default {
 
 <style scoped>
     .tab-list{
-        background-color: #fff;
+        background-color: rgba(0, 0, 0, .05);
         height: 40px;
         border-bottom: 1px solid #f2f2f2;
     }

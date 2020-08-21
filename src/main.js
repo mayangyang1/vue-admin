@@ -22,6 +22,9 @@ import {
   Button,
   MessageBox,
   Pagination,
+  Form,
+  FormItem,
+  Input
 
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -32,35 +35,37 @@ import axios from 'axios'
 
 
 
-router.beforeEach((to, from, next) => {
-  if(localStorage.getItem("token")){
-    next();
-  }else{
-    if(to.name === 'login') {
-      next();
-      return
-    }
-    next({path: '/login'})
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if(localStorage.getItem("token")){
+//     next();
+//   }else{
+//     if(to.name === 'login') {
+//       next();
+//       return
+//     }
+//     next({path: '/login'})
+//   }
+// })
 
 //axios 请求拦截器处理请求数据
 let loadingInstance;
+axios.defaults.withCredentials = true
 axios.interceptors.request.use(config => {
+      
   loadingInstance = Loading.service({
     fullscreen: true
   })
-  const token = localStorage.getItem('token');
-  config.headers.common['Authorization'] = 'Bearer ' + token;
+  // const token = localStorage.getItem('token');
+  // config.headers.common['Authorization'] = 'Bearer ' + token;
   return config;
 })
 
 //axios 响应拦截器处理响应数据
 axios.interceptors.response.use(res => {
   loadingInstance.close();
-  // if(res.data.code === 401) {
-  //   router.push('/login');
-  // }
+  if(res.data.code === 401) {
+    router.push('/login');
+  }
   if(res.data.code === 500) {
     Message.error(res.data.content);
   }
@@ -97,6 +102,9 @@ Vue.use(TableColumn);
 Vue.use(Upload);
 Vue.use(Button);
 Vue.use(Pagination);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Input);
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$message = Message;

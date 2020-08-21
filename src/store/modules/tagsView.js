@@ -17,7 +17,7 @@ export default {
         CLOSE_TAGS_VIEW(state, view) {
             let index = state.tagsView.findIndex(v => v.path === view.path)
             state.tagsView.splice(index, 1)
-        } 
+        },
     },
     actions: {
         closeTagsView({state, commit}, view) {

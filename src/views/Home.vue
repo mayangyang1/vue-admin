@@ -1,10 +1,10 @@
 <template>
   <el-container style="height:100vh">
-    <el-header class="header">
+    <el-header class="header-t">
       <nav-bar></nav-bar>
     </el-header>
     <el-container>
-      <el-aside class="aside" :width="asidebarStatus? '150px' : '49px'" >
+      <el-aside class="aside" :class="asidebarStatus? 'show' : 'hide'" width='150px' >
         <aside-bar></aside-bar>
       </el-aside>
       <el-aside width="18px" class="flod">
@@ -31,12 +31,13 @@ import PageView from './PageView';
 import NavBar from '../layout/NavBar';
 import Aside from '../layout/sideBar/Aside';
 import TagBar from '../layout/TagBar';
+import serviceUrl from '../api/servise.js'
 
 export default {
   name: 'home',
   data() {
     return {
-     
+      
     }
   },
   components: {
@@ -56,19 +57,70 @@ export default {
       this.$store.commit('changeAsidebarStatus');
     },
     
+    getOrgInfo() {
+      this.$axios.get(serviceUrl.orgInfo).then((res)=>{
+        console.log(res);
+      })
+    },
+    getPublicKey() {
+      this.$axios.get(serviceUrl.publicKey).then((res)=> {
+        console.log(res)
+        if(res.code == 200) {
+          localStorage.setItem('publicKey', res.content.publicKey)
+        }
+        
+      })
+    },
+    getMenuList() {
+      const that = this;
+      this.$axios.get(serviceUrl.menuList).then((res) => {
+        if(res.code === 200) {
+          let menuList = res.content;
+          let topMenuList = [];
+          let asideMenuList = [];
+          let linkMenu = [];
+          menuList.forEach((item, index) => {
+            if(!item.parentResourceCode) {
+              topMenuList.push(item);
+            }
+            if(item.parentResourceCode && !item.path) {
+              asideMenuList.push(item);
+            }
+            if(item.parentResourceCode && item.path) {
+              linkMenu.push(item);
+            }
+            
+          })
+          for(let i =0; i< asideMenuList.length; i++) {
+            asideMenuList[i].children = [];
+            for(let j=0; j<linkMenu.length; j++){
+              if(asideMenuList[i].code == linkMenu[j].parentResourceCode){
+                asideMenuList[i].children.push(linkMenu[j]);
+              }
+            }
+          }
+          that.$store.commit('SET_MENU_LIST',{topMenuList:topMenuList, asideMenuList: asideMenuList})
+          that.$store.commit('FILTER_MENU_LIST', topMenuList[0].code);
+        }
+      })
+    }
+  },
+  created(){
+    this.getMenuList();
+    this.getOrgInfo();
+    this.getPublicKey();
   }
 }
 </script>
 <style scoped>
- .header{
+ .header-t{
    background-color: #fff;
-   border-bottom: 1px solid #ccc;
- }
- .header-left{
-   height: 60px;
+   border-bottom: 2px solid #f48400;
+   height: auto!important;
+   
  }
  .aside{
-   background-color: #545c64;
+   background-color: rgba(0, 0, 0, .02);
  }
 
  .el-main{

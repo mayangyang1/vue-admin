@@ -7,16 +7,27 @@ module.exports = {
     
     productionSourceMap: false,
     devServer: {
-        port: 8081,
-        proxy: {
-            '/api': {
-                target: 'http://localhost:3000',
-                changeOrigin: true,
-                ws: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
-            }
+        hot: true,
+        port: 8080,
+        // proxy: {
+        //     '/api': {
+        //         target: 'https://rltx2-yfb-gateway.rltx.com',
+        //         changeOrigin: true,
+        //         // ws: true,
+        //         pathRewrite: {
+        //             '^/api': ''
+        //         },
+        //     }
+        // },
+        quiet: true,
+        headers: {
+            "Access-Control-Allow-Credentials": true,
+            "Access-Control-Allow-Origin": "*"
+        },
+        disableHostCheck: true,
+        overlay: {
+            warning: false,
+            errors: false
         }
     },
     configureWebpack: {
@@ -27,4 +38,5 @@ module.exports = {
             }
         }
     },
+    lintOnSave: false
 }

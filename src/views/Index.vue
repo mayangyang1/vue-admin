@@ -55,6 +55,7 @@
     </div>
 </template>
 <script>
+import serviceUrl from '../api/servise.js'
 export default {
     name: 'testPage',
     data() {
@@ -64,7 +65,7 @@ export default {
     },
     methods:{
         getWaybillList() {
-            this.$axios.get('/api/getGoodsWaybillList').then((res) => {
+            this.$axios.get(serviceUrl.logisticsList).then((res) => {
                 if(res.code === 200) {
                     this.tableData = res.content;
                 }

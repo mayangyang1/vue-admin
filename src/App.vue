@@ -22,7 +22,12 @@ a {
 #nav {
   padding: 30px;
 }
-
+.show{
+   display: block;
+ }
+ .hide{
+   display: none;
+ }
 #nav a {
   font-weight: bold;
   color: #2c3e50;
