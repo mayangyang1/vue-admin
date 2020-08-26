@@ -82,9 +82,24 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .el-input__inner {
-      padding-left: 10px;
-    }
+    padding-left: 10px;
+  }
+.footer {
+  width: 100%;
+  line-height: 22px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
+.copyright {
+  line-height: 24px;
+  color: #999
+}
+ a {
+  color: #666;
+}
 
 </style>

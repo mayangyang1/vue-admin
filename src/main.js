@@ -24,14 +24,22 @@ import {
   Pagination,
   Form,
   FormItem,
-  Input
+  Input,
+  Checkbox,
+  Dialog,
+  Radio,
+  RadioGroup
 
 } from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import './assets/scss/_reset-default.scss';
+import './assets/scss/reset.scss';
+// import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
 import router from './router'
 import store from './store/store'
 import axios from 'axios'
+import Qs from 'qs'
+import Axios from 'axios';
 
 
 
@@ -48,6 +56,14 @@ import axios from 'axios'
 // })
 
 //axios 请求拦截器处理请求数据
+function postAjax(url, data) {
+  return axios.post(url, Qs.stringify(data), {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  })
+};
+axios.postAjax = postAjax;
 let loadingInstance;
 axios.defaults.withCredentials = true
 axios.interceptors.request.use(config => {
@@ -67,7 +83,10 @@ axios.interceptors.response.use(res => {
     router.push('/login');
   }
   if(res.data.code === 500) {
-    Message.error(res.data.content);
+    if (!res.config.url.indexOf('/validate')>0) {
+      Message.error(res.data.content);
+    }
+    
   }
   return res.data;
 }, err => {
@@ -105,6 +124,10 @@ Vue.use(Pagination);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
+Vue.use(Checkbox);
+Vue.use(Dialog);
+Vue.use(Radio);
+Vue.use(RadioGroup);
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$message = Message;

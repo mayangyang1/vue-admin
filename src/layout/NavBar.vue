@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-sb" style="height:60px;">
+    <div class="flex-sb" style="height:50px;">
         <div class="header-left flex-fs">
             <img :src="platformLogoUrl" width="50px" v-if="platformLogoUrl" alt="">
             <!-- <div>行天下物流有限公司</div> -->

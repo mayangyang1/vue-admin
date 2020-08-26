@@ -9,6 +9,16 @@ const serviceUrl = {
     logisticsList: hostUrl + '/logistics/logistics/list?page=1&size=10',//订单列表
     logOut: hostUrl + '/account/logout',//退出登录
     menuList: hostUrl + '/permission/permission/user/resource/list/self',//菜单列表
+    verifyCode: hostUrl + '/account/account/reset_password/send/verify_code', //获取手机验证码
+    checkValiCode: hostUrl + '/account/account/reset_password/verify_code',//校验忘记密码验证码
+    checkRegisterCode: hostUrl + '/account/account/verify_code',//校验注册验证码
+    registerVerifyCode: hostUrl + '/account/account/send/verify_code',//获取注册验证码
+    addUser: hostUrl + '/account/account/add',//注册用户
+    registerOrg: hostUrl + '/account/org/register',//注册公司
+    validateCompany: hostUrl + '/account/org/validate_unique',//校验公司名称
+    getSelfInfo: hostUrl + '/person/person/self/info',//获取人员信息
+    resetPassword: hostUrl + '/account/account/reset_password', //重置密码
+    
 }
 
 export default serviceUrl;

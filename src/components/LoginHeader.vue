@@ -26,6 +26,50 @@ export default {
 };
 </script>
 <style  lang="scss" rel="stylesheet/scss">
-   
+@import "../assets/scss/common.scss";
+.topbar {
+  height: 30px;
+  background: #fff;
+  border-bottom: solid 1px #e6e6e6;
+  line-height: 30px;
+
+  .inner {
+    .home {
+      cursor: pointer;
+    }
+  }
+}
+
+.topbar a:hover {
+	color: $uiColor
+}
+.ico-phone,
+.ico-qr,
+.ico-tel {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 8px 6px 8px 0;
+  vertical-align: middle;
+  background: url(../assets/images/login/logreg.png) no-repeat -1px -1px
+}
+
+.ico-tel {
+  background-position: -1px -17px
+}
+
+.ico-phone {
+  background-position: -17px -1px
+}
+
+.tel {
+
+	color: $uiColor;
+	font-size: 18px
+}
+   .inner {
+  width: 1000px;
+  margin: 0 auto
+}
 
 </style>

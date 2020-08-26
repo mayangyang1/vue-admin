@@ -37,7 +37,7 @@
                         </el-form-item>
                         <el-form-item prop="password">
                             <el-input type="password" v-model='ruleForm.password' placeholder="请输入密码" name="password" class="password"></el-input>
-                            <a href="/findPwd/confirm.html" class="forget-pwd">忘记密码？</a>
+                            <span @click="toFindPwd" class="forget-pwd">忘记密码？</span>
                         </el-form-item>
                         <!-- <el-form-item> -->
                             <el-button type="primary" class="button" @click="login('ruleForm')">登录</el-button>
@@ -50,7 +50,7 @@
                     <p>——中国领先的物流服务整合平台</p>
                     <p>随时随地，找货无忧！</p>
                     <p>立刻注册，享受更多车源货源信息服务！</p> -->
-                    <div class="el-button el-button--line" v-if="showRegister">注册与激活</div>
+                    <div class="el-button el-button--line" @click="toRegister" v-if="showRegister">注册与激活</div>
                     <!-- <a href="/register/personal.html" class="el-button el-button--line">账号激活</a> -->
                 </div>
             </div>
@@ -141,6 +141,12 @@ export default {
                     that.loginInfo()
                 }
             })
+        },
+        toFindPwd() {
+            this.$router.push('/findPwd');
+        },
+        toRegister(){
+          this.$router.push('/enterprise');
         },
 
         login() {
@@ -243,64 +249,14 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss"scoped  rel="stylesheet/scss">
 @import "../assets/scss/common.scss";
  a {
   color: #666;
 }
-
-.inner {
-  width: 1000px;
-  margin: 0 auto
-}
-
 .bg-logreg {
   background: url(../assets/images/login/sepline.jpg) repeat-x center center
 }
-
-.topbar {
-  height: 30px;
-  background: #fff;
-  border-bottom: solid 1px #e6e6e6;
-  line-height: 30px;
-
-  .inner {
-    .home {
-      cursor: pointer;
-    }
-  }
-}
-
-.topbar a:hover {
-	color: $uiColor
-}
-
-.ico-phone,
-.ico-qr,
-.ico-tel {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin: 8px 6px 8px 0;
-  vertical-align: middle;
-  background: url(../assets/images/login/logreg.png) no-repeat -1px -1px
-}
-
-.ico-tel {
-  background-position: -1px -17px
-}
-
-.ico-phone {
-  background-position: -17px -1px
-}
-
-.tel {
-
-	color: $uiColor;
-	font-size: 18px
-}
-
 .wlqr {
   margin-right: 12px;
   position: relative
@@ -349,7 +305,7 @@ export default {
 	// background-image: url(img/logo-medium.png);
 	background-repeat: no-repeat;
 	overflow: hidden;
-	text-indent: -130%;
+	text-indent: -160%;
 }
 
 .btn-highlight,.btn-normal,.btn-normal:hover {
@@ -398,18 +354,7 @@ export default {
 	border: dashed 1px $uiColor
 }
 
-.footer {
-  width: 100%;
-  line-height: 22px;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px
-}
 
-.copyright {
-  line-height: 24px;
-  color: #999
-}
 
 em {
   font-style: normal
@@ -536,7 +481,15 @@ em {
     overflow: hidden;
     background: url(../assets/images/login/logreg.png) no-repeat -32px 0;
   }
+  /deep/ .el-input__inner{
+        width: 300px;
+        height: 36px;
+        padding-left: 38px;
+        border-radius: 3px;
+    }
+  
 }
+
 
 .password {
   &:before {
@@ -550,12 +503,7 @@ em {
   }
 }
 
-.el-input__inner {
-    width: 300px;
-    height: 36px;
-    padding-left: 38px;
-    border-radius: 3px;
-  }
+
 
   .el-button {
     width: 300px;
@@ -579,41 +527,10 @@ em {
     top: 0px;
     font-size: 12px;
     color: #999 !important;
+    cursor: pointer;
     
   }
   .forget-pwd:hover {
       color: #f48400;
     }
-/* .login-card{
-    width: 500px;
-    margin: 0 auto;
-    margin-top: 200px;
-    padding: 30px 0;
-}
- .logos img{
-     margin-top: 10px;
-     width: 100px;
-     height: 100px;
-     border-radius: 50%;
- }
- .input input {
-     border: 1px solid #ccc;
-     height: 30px;
-     width: 200px;
-     margin: 0 auto;
-     padding-left: 4px;
-    margin-top: 6px;
-    border-radius: 4px;
- }
- .btn{
-     width: 200px;
-     height: 34px;
-     margin: 0 auto;
-     line-height: 34px;
-     margin-top: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
- } */
 </style>

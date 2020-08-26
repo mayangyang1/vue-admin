@@ -53,6 +53,36 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
     },
     {
+      path: '/findPwd',
+      name: 'findPwd',
+      component: () => import( /* webpackChunkName: "about" */ './views/FindPwd.vue')
+    },
+    {
+      path: '/resetPwd',
+      name: 'resetPwd',
+      component: () => import( /* webpackChunkName: "about" */ './views/ResetPwd.vue')
+    },
+    {
+      path: '/setPwdSuccess',
+      name: 'setPwdSuccess',
+      component: () => import( /* webpackChunkName: "about" */ './views/SetPwdSuccess.vue')
+    },
+    {
+      path: '/enterprise',
+      name: 'enterprise',
+      component: () => import( /* webpackChunkName: "about" */ './views/Enterprise.vue')
+    },
+    {
+      path: '/registerCompany',
+      name: 'registerCompany',
+      component: () => import( /* webpackChunkName: "about" */ './views/RegisterCompany.vue')
+    },
+    {
+      path: '/registerSuccess',
+      name: 'registerSuccess',
+      component: () => import( /* webpackChunkName: "about" */ './views/RegisterSuccess.vue')
+    },
+    {
       path: '*',
       redirect: '/404Page'
     }

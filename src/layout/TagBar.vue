@@ -3,7 +3,7 @@
         <router-link v-for="item in tagsViewList" :key="item.name" :to="{ 'path': item.path, 'query': item.query, 'fullPath': item.fullPaht}">
             <div class="tag-view" :class="isTagActive(item)? 'main-bg-color' : ''">
                 <span>{{item.meta.title? item.meta.title : item.name}}</span>
-                <i class="el-icon-close" @click.prevent="closeTag(item)"></i>
+                <i class="el-icon-close" v-if="item.path !== '/'" @click.prevent="closeTag(item)"></i>
             </div>
         </router-link>
     </el-row>
@@ -64,7 +64,7 @@ export default {
       border: 1px solid #f2f2f2;
       border-radius: 3px;
       margin-left: 10px;
-      padding: 4px 6px;
+      padding: 5px 10px;
       font-size: 14px;
       cursor: pointer;
     }

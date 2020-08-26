@@ -15,7 +15,7 @@
       <el-container>
         <el-main class="main">
           <tag-bar></tag-bar>
-          <app-page-view></app-page-view>
+          <app-page-view class="app-page-view"></app-page-view>
         </el-main>
         <!-- <el-footer class="footer">
          <footer-bar></footer-bar>
@@ -128,6 +128,11 @@ export default {
  }
  .main{
    background-color: #fff;
+    display: flex;
+    flex-direction: column
+ }
+ .app-page-view{
+   flex: 1;
  }
  .footer{
    background-color: #f2f2f2;

@@ -4,7 +4,9 @@
   </div>
 </template>
 
-<style>
+<style lang="scss" rel="stylesheet/scss">
+// @import "./assets/scss/common.scss";
+// @import "./assets/scss/_reset-default.scss";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
