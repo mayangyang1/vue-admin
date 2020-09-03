@@ -10,7 +10,7 @@ export default {
     render(h, context) {
         const { to } = context.props
         const vnodes = []
-        vnodes.push(<router-link to={{ 'name': to.name }}>{context.children}</router-link>)
+        vnodes.push(<router-link to={{ 'name': to.pathRoute }}>{context.children}</router-link>)
         return vnodes
     }
 }

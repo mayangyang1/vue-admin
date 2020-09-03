@@ -5,8 +5,13 @@
 </template>
 
 <style lang="scss" rel="stylesheet/scss">
-// @import "./assets/scss/common.scss";
+@import "./assets/scss/common.scss";
 // @import "./assets/scss/_reset-default.scss";
+.el-button--primary{
+   background-color: $uiColor !important;
+   border-color: $uiColor !important;
+   color: #fff !important;
+ }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -69,19 +74,19 @@ body, html {
 }
 /*主题色 --start*/
 .main-color{
-  color: #f46d00;
+  color: #f46d00!important;
 }
 .main-bg-color{
-  background-color: #f46d00;
-  color: #fff;
+  background-color: #f46d00!important;
+  color: #fff!important;
 }
 .main-bd-color{
-  background-color: #f46d00;
-  color: #fff;
-  border: 1px solid #f46d00;
+  background-color: #f46d00!important;
+  color: #fff!important;
+  border: 1px solid #f46d00!important;
 }
 .main-bd{
-  border: 1px solid #f46d00;
+  border: 1px solid #f46d00!important;
 }
 /*主题色 --end*/
 /*padding布局 --start*/

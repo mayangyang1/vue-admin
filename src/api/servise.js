@@ -18,6 +18,7 @@ const serviceUrl = {
     validateCompany: hostUrl + '/account/org/validate_unique',//校验公司名称
     getSelfInfo: hostUrl + '/person/person/self/info',//获取人员信息
     resetPassword: hostUrl + '/account/account/reset_password', //重置密码
+    freightList: hostUrl + '/freight/freight/list', //货源列表
     
 }
 

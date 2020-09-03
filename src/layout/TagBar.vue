@@ -67,6 +67,8 @@ export default {
       padding: 5px 10px;
       font-size: 14px;
       cursor: pointer;
+      background-color: #fff;
+      color: #454545;
     }
     .el-icon-close{
         padding-left: 4px;

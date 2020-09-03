@@ -24,8 +24,8 @@ export default new Router({
           }
         },
         {
-          path: '/resource',
-          name: 'resource',
+          path: '/freightList',
+          name: 'freightList',
           component: () => import( /* webpackChunkName: "about" */ './views/Resource.vue'),
            meta: {
              keep: true,

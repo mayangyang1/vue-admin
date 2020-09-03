@@ -87,6 +87,21 @@ export default {
               asideMenuList.push(item);
             }
             if(item.parentResourceCode && item.path) {
+              let pathArr = item.path.split('.')[0].split('/');
+              let nextName;
+              let lastName;
+              let pathRoute;
+              if(pathArr.length == 3) {
+                nextName = pathArr[2].charAt(0).toUpperCase() + pathArr[2].substring(1);
+                pathRoute = pathArr[1] + nextName;
+              }
+              if(pathArr.length == 4) {
+                nextName = pathArr[2].charAt(0).toUpperCase() + pathArr[2].substring(1);
+                lastName = pathArr[3].charAt(0).toUpperCase() + pathArr[3].substring(1);
+                pathRoute = pathArr[1] + nextName + lastName;
+              }
+              console.log(pathRoute);
+              item.pathRoute = pathRoute;
               linkMenu.push(item);
             }
             
