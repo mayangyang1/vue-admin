@@ -15,6 +15,7 @@ export default {
     computed: {
         keepRoutes() {
             let routelist = this.$store.state.tagsView.tagsView
+            console.log('tagsView',routelist)
             let keepRouteList = [];
             routelist.forEach(item => {
                 keepRouteList.push(item.name);

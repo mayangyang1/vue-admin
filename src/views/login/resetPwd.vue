@@ -75,9 +75,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import loginHeader from '../components/LoginHeader.vue'
-  import loginFooter from '../components/LoginFooter.vue'
-  import serviceUrl from '../api/servise.js'
+  import loginHeader from '@/components/LoginHeader.vue'
+  import loginFooter from '@/components/LoginFooter.vue'
+  import serviceUrl from '@/api/servise.js'
 
   export default {
     components:{
@@ -264,8 +264,8 @@
 </script>
 
 <style lang="scss" scoped rel="stylesheet/scss">
-   @import "../assets/scss/common.scss";
-  @import "../assets/scss/findPwd.scss";
+   @import "../../assets/scss/common.scss";
+  @import "../../assets/scss/findPwd.scss";
 
   .formlist {
     margin: 50px;

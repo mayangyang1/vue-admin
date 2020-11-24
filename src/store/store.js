@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import routeTag from './modules/routeTag'
 import tagsView from './modules/tagsView'
+import radioChange from './modules/radioChange'
 
 Vue.use(Vuex)
 
@@ -42,5 +43,6 @@ export default new Vuex.Store({
   modules : {
     routeTag: routeTag,
     tagsView: tagsView,
+    radioChange: radioChange
   }
 })

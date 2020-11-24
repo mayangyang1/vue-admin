@@ -6,17 +6,17 @@
       <ele-label v-if="field.controlType === 'label'" :editable="editable" :configData="field" :domainObject="domainObject" :isList="isList"></ele-label> -->
       <ele-input v-if="field.controlType === 'text'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-input>
       <!-- <ele-tag v-if="field.controlType === 'tag'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-tag>
-      <ele-new-tag v-if="field.controlType === 'newTag'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-new-tag>
+      <ele-new-tag v-if="field.controlType === 'newTag'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-new-tag> -->
       <ele-textarea v-if="field.controlType === 'textarea'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-textarea>
       <ele-radio v-if="field.controlType === 'radio'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-radio>
       <ele-checkbox v-if="field.controlType === 'checkbox'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-checkbox>
-      <ele-autocomplete v-if="field.controlType === 'autocomplete'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-autocomplete>
+      <!-- <ele-autocomplete v-if="field.controlType === 'autocomplete'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-autocomplete> -->
       <ele-date v-if="field.controlType === 'date'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-date>
-      <ele-image v-if="field.controlType === 'image'" :configData="field" :domainObject="domainObject" :uploadUrl="uploadUrl" :editable="editable" :isList="isList" :rules="validateRule"></ele-image>
-      <ele-file-upload v-if="field.controlType === 'file'" :configData="field" :domainObject="domainObject" :uploadUrl="uploadUrl" :action="''" :listType="'picture-card'" :editable="editable" :isList="isList" :rules="validateRule" :maxLength="field.maxLength"></ele-file-upload>
-      <ele-pop v-if="field.controlType === 'pop'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-pop>
+      <!-- <ele-image v-if="field.controlType === 'image'" :configData="field" :domainObject="domainObject" :uploadUrl="uploadUrl" :editable="editable" :isList="isList" :rules="validateRule"></ele-image>
+      <ele-file-upload v-if="field.controlType === 'file'" :configData="field" :domainObject="domainObject" :uploadUrl="uploadUrl" :action="''" :listType="'picture-card'" :editable="editable" :isList="isList" :rules="validateRule" :maxLength="field.maxLength"></ele-file-upload> -->
+      <!-- <ele-pop v-if="field.controlType === 'pop'" :editable="editable" :configData="field" :domainObject="domainObject" :popInfoConfig="field.logisticsPopConfig"></ele-pop> -->
       <ele-select v-if="field.controlType === 'select'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-select>
-      <ele-number v-if="field.controlType === 'number'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-number>
+      <!-- <ele-number v-if="field.controlType === 'number'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-number>
       <ele-pop-map v-if="field.controlType === 'pop-map'" :editable="editable" :configData="field" :domainObject="domainObject" :rules="validateRule" :isList="isList"></ele-pop-map>
       <ele-more v-if="field.controlType === 'more'" :editable="editable" :configData="field" :domainObject="domainObject" :isList="isList"></ele-more>
       <ele-link v-if="field.controlType === 'link'" :editable="editable" :configData="field" :domainObject="domainObject" :isList="isList"></ele-link>
@@ -26,28 +26,28 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-// import eleRadio from '../ele-radio/eleRadio.vue';
+import EleRadio from './EleRadio.vue';
 
-// import eleCheckbox from '../ele-checkbox/eleCheckbox.vue';
+import EleCheckbox from './EleCheckbox.vue';
 
-import eleInput from './EleInput.vue';
+import EleInput from './EleInput.vue';
 
-// import eleTextarea from '../ele-textarea/eleTextarea.vue';
+import EleTextarea from './EleTextarea.vue';
 
 // import eleAutocomplete from '../ele-autocomplete/eleAutocomplete.vue';
 
-// import eleDate from '../ele-date/eleDate.vue';
+import EleDate from './EleDate.vue';
 
 // import eleImage from '../ele-image/eleImage.vue';
 
 // import eleFileUpload from '../ele-file-upload/eleFileUpload.vue';
 
-// import elePop from '../ele-pop-select/elePopSelect.vue';
+// import ElePopSelect from './ElePopSelect.vue';
 // //  import elePop from '../ele-pop/elePop.vue';
 
 // import elePopMap from '../ele-pop-map/elePopMap.vue';
 
-// import eleSelect from '../ele-select/eleSelect.vue';
+import EleSelect from './EleSelect.vue';
 
 // import eleNumber from '../ele-number/eleNumber.vue';
 
@@ -88,17 +88,17 @@ export default {
     inputKey: Array
   },
   components: {
-    // 'ele-radio': eleRadio,
-    // 'ele-checkbox': eleCheckbox,
-    'ele-input': eleInput,
-    // 'ele-textarea': eleTextarea,
+    'ele-radio': EleRadio,
+    'ele-checkbox': EleCheckbox,
+    'ele-input': EleInput,
+    'ele-textarea': EleTextarea,
     // 'ele-autocomplete': eleAutocomplete,
-    // 'ele-date': eleDate,
+    'ele-date': EleDate,
     // 'ele-image': eleImage,
     // 'ele-file-upload': eleFileUpload,
-    // 'ele-pop': elePop,
+    // 'ele-pop': ElePopSelect,
     // 'ele-pop-map': elePopMap,
-    // 'ele-select': eleSelect,
+    'ele-select': EleSelect,
     // 'ele-number': eleNumber,
     // 'ele-tag': eleTag,
     // 'ele-new-tag': eleTagNew,

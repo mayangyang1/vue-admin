@@ -1,14 +1,14 @@
 <template>
   <el-form :inline="false" :model="searchModel" ref="searchModel" class="demo-form-inline flex-fs table-search">
-    <el-row v-for="searchField in searchFields" :key="searchField.fieldConfigCode">
-      <el-form-item :label="searchField.showName" class="flex-fs">
+    <el-row v-for="(searchField,index) in searchFields" :key="searchField.fieldConfigCode">
+      <el-form-item :label="searchField.showName" class="flex-fs" v-if="index<2">
         <ele-block :field="searchField" :domainObject="searchModel"></ele-block>
       </el-form-item>
     </el-row>
     <el-row class="as-ft flex-fs">
       <el-button type="primary" @click="onSubmit"><i class="el-icon-search"></i> 立即筛选</el-button>
       <el-button @click="resetForm('searchModel')">重置条件</el-button>
-      <span id="advanceSearch" v-if="isShow">高级搜索</span>
+      <span id="advanceSearch" @click="changeSearch" v-if="isShow">高级搜索</span>
     </el-row>
   </el-form>
 </template>
@@ -47,6 +47,9 @@ import eleBlock from '../widget/EleBlock.vue'
           }
         });
         this.$emit('reset');
+      },
+      changeSearch(){
+        this.$emit('changeSearch');
       }
     }
   };

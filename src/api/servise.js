@@ -18,7 +18,9 @@ const serviceUrl = {
     validateCompany: hostUrl + '/account/org/validate_unique',//校验公司名称
     getSelfInfo: hostUrl + '/person/person/self/info',//获取人员信息
     resetPassword: hostUrl + '/account/account/reset_password', //重置密码
-    freightList: hostUrl + '/freight/freight/list', //货源列表
+    freightList: hostUrl + '/freight/freight/list', //货源列表,
+    areaInfo: hostUrl + '/person/area/map/get',//省市区数组对象
+    truckModelList: hostUrl + '/platform/truck_model/list',//车型要求列表
     
 }
 

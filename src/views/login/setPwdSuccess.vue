@@ -54,8 +54,8 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import loginHeader from '../components/LoginHeader.vue'
-  import loginFooter from '../components/LoginFooter.vue'
+  import loginHeader from '@/components/LoginHeader.vue'
+  import loginFooter from '@/components/LoginFooter.vue'
 
   export default {
     components:{
@@ -130,7 +130,7 @@
 </script>
 
 <style lang="scss" scoped rel="stylesheet/scss">
-  @import "../assets/scss/findPwd.scss";
+  @import "../../assets/scss/findPwd.scss";
   .wel-section {
     strong {
       font-size: 18px;

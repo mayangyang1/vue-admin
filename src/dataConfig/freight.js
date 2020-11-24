@@ -1,179 +1,288 @@
+import {publishStatus,scheduleType, meterageType,releaseRange, getAreaName} from '../config/unitConfig.js'
 function columns (){
 	return [
 		{
-				title: '货源号',
-				slot: 'freightNo',
-				fixCol:true
+      title: '货源号',
+      slot: 'freightNo',
+      fixCol:true
 		},
 		{
-				title: '订单号',
-				key: 'logisticsCode'
+      title: '订单号',
+      key: 'logisticsCode'
 		},
 		{
-				title: '货源状态',
-				render: (h, {
-						row,
-						column,
-						index
-				}) => {
-						let statusMap = {
-								finished: '已结束',
+      title: '货源状态',
+      render: (h, {
+        row,
+        column,
+        index
+      }) => {
+        let freightStatus = publishStatus[row.status];
 
-						}
-						let freightStatus = statusMap[row.status];
+        return h('span', freightStatus);
+      }
+		},
+		{
+      title: '调车模式',
+      render: (h, {
+        row,
+        column,
+        index
+      }) => {
+        let dispatchMode = scheduleType[row.scheduleType];
 
-						return h('span', freightStatus);
-				}
+        return h('span', dispatchMode);
+      }
 		},
 		{
-				title: '调车模式',
-				render: (h, {
-						row,
-						column,
-						index
-				}) => {
-						let dispatchModeMap = {
-								self: '自助调车模式',
+      title: '计量标准',
+      render: (h, {
+        row,
+        column,
+        index
+      }) => {
+        let meterageTypes = meterageType[row.meterageType];
 
-						}
-						let dispatchMode = dispatchModeMap[row.scheduleType];
+        return h('span', meterageTypes);
+      }
+		},
+		{
+      title: '发布范围',
+      render: (h, {
+        row,
+        column,
+        index
+      }) => {
+        let releaseRanges = releaseRange[row.releaseRange];
 
-						return h('span', dispatchMode);
-				}
+        return h('span', releaseRanges);
+      }
 		},
 		{
-				title: '计量标准',
-				render: (h, {
-						row,
-						column,
-						index
-				}) => {
-						let meteMap = {
-								ton: '吨',
-								cube: '方',
-								item: '件',
+      title: '需求车次',
+      key: 'truckQty'
+		},
+		{
+      title: '已接车次',
+      key: 'acceptTruckNumber'
+		},
+		{
+      title: '已派车次',
+      key: 'dispatchTruckNumber'
+		},
+		{
+			title: '发货地',
+			render: (h, {
+				row,
+				column,
+				index
+			}) => {
+				let loadingAddress = getAreaName(row.loadingProvinceCode, row.loadingCityCode, row.loadingCountyCode);
 
-						}
-						let meterageType = meteMap[row.meterageType];
+				return h('span', loadingAddress);
+			}
+		},
+		{
+      title: '发货详细地址',
+      key: 'loadingAddress'
+		},
+		{
+			title: '收货地',
+			render: (h, {
+				row,
+				column,
+				index
+			}) => {
+				let loadingAddress = getAreaName(row.unloadingProvinceCode, row.unloadingCityCode, row.unloadingCountyCode);
 
-						return h('span', meterageType);
-				}
+				return h('span', loadingAddress);
+			}
+		},
+  {
+      title: '收货详细地址',
+      key: 'unloadingAddress'
 		},
 		{
-				title: '发布范围',
-				render: (h, {
-						row,
-						column,
-						index
-				}) => {
-						let releaseRangeMap = {
-								platform: '全平台',
+      title: '货物名称',
+      key: 'goodsName'
+		},
+		{
+      title: '货物重量',
+      key: 'goodsWeight'
+		},
+		{
+			title: '货物体积',
+			key: 'goodsVolume'
+		},
+		{
+			title: '货物数量',
+			key: 'goodsAmount'
+		},
+		{
+			title: '报价类型',
+			slot: 'quoteType'
+		},
+		{
+			title: '车型要求',
+			slot: 'truckModelRequire'
+		},
+		{
+			title: '车长要求',
+			render: (h, {
+				row,
+				column,
+				index
+			}) => {
+				let truckLengthRequireList = row.truckLengthRequire ? row.truckLengthRequire.split(',') : [];
+				let truckLengthRequire = '';
+				truckLengthRequireList.forEach((item)=>{
+					truckLengthRequire+=item+'米 '
+				})
 
-						}
-						let releaseRange = releaseRangeMap[row.releaseRange];
-
-						return h('span', releaseRange);
-				}
+				return h('span', truckLengthRequire);
+			}
 		},
 		{
-				title: '需求车次',
-				key: 'truckQty'
-		},
-		// {
-		//   title: '待处理车次',
-		//   key: 'acceptTruckNumber'
-		// },
-		{
-				title: '已接车次',
-				key: 'acceptTruckNumber'
+      title: '联系人',
+      key: 'contactUserFullName'
 		},
 		{
-				title: '已派车次',
-				key: 'dispatchTruckNumber'
+      title: '联系电话',
+      key: 'contactPhone'
 		},
 		{
-				title: '发货详细地址',
-				key: 'loadingAddress'
+			title: '发布人',
+			key: 'publishUserFullName'
 		},
 		{
-				title: '收货详细地址',
-				key: 'unloadingAddress'
+      title: '货源有效期',
+      key: 'freightEndTime'
 		},
 		{
-				title: '货物名称',
-				key: 'goodsName'
+      title: '客户',
+      key: 'clientOrgName'
 		},
 		{
-				title: '货物重量',
-				key: 'goodsWeight'
-		},
-		{
-				title: '联系人',
-				key: 'contactUserFullName'
-		},
-		{
-				title: '联系电话',
-				key: 'contactPhone'
-		},
-		{
-				title: '货源有效期',
-				key: 'freightEndTime'
-		},
-		{
-				title: '客户',
-				key: 'clientOrgName'
-		},
-		{
-				title: '线路名称',
-				key: 'routeName'
+      title: '线路名称',
+      key: 'routeName'
 		},
 	];
 }
 function searchFields() {
-	return [
-		{
-		"showName":"运单号",
-		"elementCode":"text",
-		"extraParams":[{"field":"waybillNo","placeholder":"请输入运单号","controlType":"text","datasource":"","value":"","maxLength":1000}],
-		"fieldConfigCode":"waybillNo",
-		},
-		{
-		"showName":"车牌号",
-		"elementCode":"text",
-		"extraParams":[{"field":"truckLicenseNo","placeholder":"请输入车牌号","controlType":"text","datasource":"","value":"","maxLength":1000}],
-		"fieldConfigCode":"truckLicenseNo",
-		}
-	]
+	return [{
+		"showName": "货源号",
+		"elementCode": "text",
+		"extraParams": [{
+			"field": "freightNo",
+			"controlType": "text",
+			"datasource": "",
+			"value": "",
+			"maxLength": 1000
+		}],
+		"fieldConfigCode": "freightNo",
+		
+	}, {
+		"showName": "订单号",
+		"elementCode": "text",
+		"extraParams": [{
+			"field": "logisticsNo",
+			"controlType": "text",
+			"datasource": "",
+			"value": "",
+			"maxLength": 1000
+		}],
+		"fieldConfigCode": "logisticsNo",
+	}, {
+		"showName": "货源状态",
+		"elementCode": "select",
+		"extraParams": [{
+			"field": "status",
+			"optionsValue": ["pushling", "finished"],
+			"options": ["发布中", "已结束"],
+			"controlType": "select",
+			"datasource": "",
+			"value": "",
+			"text": ""
+		}],
+		"fieldConfigCode": "status",
+	
+	}, {
+		"showName": "调车模式",
+		"elementCode": "select",
+		"extraParams": [{
+			"required": "false",
+			"field": "scheduleType",
+			"default": "",
+			"optionsValue": ["platform", "self"],
+			"options": ["委托调车模式", "自助调车模式"],
+			"controlType": "select",
+			"datasource": "",
+			"value": "",
+			"text": ""
+		}],
+		"fieldConfigCode": "scheduleType",
+		"required": "false",
+		"detailLinkVisiable": "false",
+	},  {
+		"showName": "发货地",
+		"elementCode": "selectArea",
+		"extraParams": [{
+			"field": "loadingProvinceCode",
+			"controlType": "select",
+			"datasource": "province",
+			"value": "",
+			"text": ""
+		}, {
+			"field": "loadingCityCode",
+			"controlType": "select",
+			"datasource": "city",
+			"value": "",
+			"text": ""
+		}, {
+			"field": "loadingCountyCode",
+			"controlType": "select",
+			"datasource": "county",
+			"value": "",
+			"text": ""
+		}],
+		"fieldConfigCode": "loadingArea",
+	}, {
+		"showName": "收货地",
+		"elementCode": "selectArea",
+		"extraParams": [{
+			"field": "unloadingProvinceCode",
+			"controlType": "select",
+			"datasource": "province",
+			"value": "",
+			"text": ""
+		}, {
+			"field": "unloadingCityCode",
+			"controlType": "select",
+			"datasource": "city",
+			"value": "",
+			"text": ""
+		}, {
+			"field": "unloadingCountyCode",
+			"controlType": "select",
+			"datasource": "county",
+			"value": "",
+			"text": ""
+		}],
+		"fieldConfigCode": "unloadingArea",
+	}]
 }
 function searchModel() {
 	return {
-		"waybillNo": null,
-		"truckLicenseNo": null,
-		"logisticsNo": null,
-		"waybillStatus": null,
+		"freightNo": null,
+		"status": null,
 		"scheduleType": null,
-		"driverConfirmStatus": null,
-		"clientOrgName": null,
-		"originalConsignOrgName": null,
-		"consignOrgName": null,
-		"driverFullName": null,
-		"settleStatus": null,
-		"consignEvaluation": null,
-		"routeName": null,
-		"routeCode": null,
-		"loadingOrgName": null,
-		"creatorUsername": null,
-		"unloadingOrgName": null,
+		"logisticsNo": null,
 		"loadingProvinceCode": null,
 		"loadingCityCode": null,
 		"loadingCountyCode": null,
 		"unloadingProvinceCode": null,
 		"unloadingCityCode": null,
-		"unloadingCountyCode": null,
-		"waybillTag": null,
-		"from_createTime": null,
-		"undefined": null,
-		"to_createTime": null
+		"unloadingCountyCode": null
 	}
 }
 

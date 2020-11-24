@@ -1,7 +1,7 @@
 
 <template>
   <div class="block">
-    <el-form-item :prop="this.configData.field" :rules="rules" v-if="!isList && editable">
+    <el-form-item :prop="this.configData.field" :rules="configData.rules" v-if="editable">
       <el-input
         v-model="domainObject[configData.field]"
         :name="configData.field"
@@ -10,25 +10,8 @@
         :readonly="configData.readonly==='true'"
         @focus="handleFocus"
         :disabled="configData.readonly==='readonly'"></el-input>
-        <!-- <span class="ico-robotic" @click="loadRobot" v-if="configData.robot === 'TRUE'" title="你好，我是iRobot智能机器人！点击我试试看吧！"></span> -->
     </el-form-item>
-    <!-- <template v-if="isList && editable">
-      <el-input
-        v-model="domainObject[configData.field]"
-        :name="configData.field"
-        :placeholder="configData.placeholder"
-        :maxlength="configData.maxLength"
-        :readonly="configData.readonly==='true'"
-        @focus="handleFocus"
-        :disabled="configData.readonly==='readonly'"></el-input>
-    </template>
-    <span v-if="editable === false">{{text}}</span> -->
-    <!-- 小智机器人弹窗 -->
-    <!-- <el-dialog title="小智机器人" :visible.sync="dialogVisible" v-if="dialogVisible" size="large">
-      <div class="iframe">
-        <iframe :src="iframeSrc" class="iframe" allowtransparency="true" frameborder="0"></iframe>
-      </div>
-    </el-dialog> -->
+    <span v-else>{{domainObject[configData.field]}}</span>
   </div>
 </template>
 
@@ -41,14 +24,12 @@
     name: 'eleInput',
     // inject: ['eventBus'],
     props: {
-      isList: Boolean,
       configData: Object,
       editable: {
         type: Boolean,
         'default': true
       },
       domainObject: Object,
-      rules: Array
     },
     data() {
       return {
@@ -123,7 +104,7 @@
 
     //   },
       handleFocus() {
-        this.$forceUpdate();
+        this.$emit('focus');
       }
     },
     beforeCreate() {
@@ -164,10 +145,14 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
+@import "../../assets/scss/common.scss";
 .iframe {
   width: 100%;
   height: 100%;
   min-height: 290px;
+}
+ .el-input.is-disabled .el-input__inner {
+    background-color: #fff!important;
 }
 .ico-robotic {
   position: absolute;

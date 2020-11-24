@@ -50,5 +50,35 @@ function toggleClass(ele, cls) {
     addClass(ele, cls);
   }
 }
+/**
+ * 匹配权限方法
+ */
+function checkedPermission(_value) {
+  let _values = '';
+  let roleObj = localStorage.getItem('loginInfo');
+  let permissionList = roleObj.permissionCodeList || [];
+  permissionList.find((v, i) => {
+    if (v === _value) {
+      _values = _value;
+    }
+  })
+  return _values;
+}
+function dealInputKey(inputKeys, cb) {
+  const inputKeyArray = inputKeys.split(',');
+  inputKeyArray.forEach((inputKey) => {
+    const inputKeyArr = inputKey.split('.');
+    PublicArea.addSetObservers(inputKeyArr[0], (outData) => {
+      if (inputKeyArr[1] == 'meterageType') {
+        cb(inputKeyArr[1], outData);
+      } else {
+        setTimeout(() => {
+          cb(inputKeyArr[1], outData);
+        }, 500)
+      }
 
-export { hasClass, addClass, removeClass, toggleClass };
+    });
+  });
+}
+
+export { hasClass, addClass, removeClass, toggleClass,checkedPermission,dealInputKey };

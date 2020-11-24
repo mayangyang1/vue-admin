@@ -3,7 +3,7 @@
     <table>
       <thead>
         <tr>
-          <th class="fix-hd fix-col">
+          <th class="fix-hd fix-col" v-show="needCheckBox">
             <input type="checkbox" class="ck-all">
           </th>
           <th class="fix-hd fix-col" v-if="operatable">操作</th>
@@ -12,16 +12,16 @@
       </thead>
       <tbody>
         <tr v-for="(row, rowIndex) in data" :key="rowIndex">
-          <td class="fix-col check-box" >
+          <td class="fix-col check-box" v-show="needCheckBox">
             <input type="checkbox" class="ck-single">
           </td>
           <td class="fix-col" v-if="operatable">
             <div class="cell" style="width: 100px">
-              <el-button size="mini" v-if="operationLst[rowIndex] && operationLst[rowIndex].length === 1" @click="operationAction(operationLst[rowIndex][0]['actionUrl'], row)">{{ operationLst[rowIndex][0]['name'] }}</el-button>
-              <el-dropdown v-else-if="operationLst[rowIndex] && operationLst[rowIndex].length > 1" size="mini" split-button  @click="operationAction(operationLst[rowIndex][0].actionUrl, row)">
-                {{ operationLst[rowIndex][0].name }}
+              <el-button size="mini" v-if="operationList[rowIndex] && operationList[rowIndex].length === 1" @click="operationAction(operationList[rowIndex][0]['actionUrl'], row)">{{ operationList[rowIndex][0]['name'] }}</el-button>
+              <el-dropdown v-else-if="operationList[rowIndex] && operationList[rowIndex].length > 1" size="mini" split-button  @click="operationAction(operationList[rowIndex][0].actionUrl, row)">
+                {{ operationList[rowIndex][0].name }}
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item v-for="(item, index) in operationLst[rowIndex]" :key="index" >
+                  <el-dropdown-item v-for="(item, index) in operationList[rowIndex]" :key="index" >
                     <span v-if="index > 0" @click="operationAction(item.actionUrl, row)">{{ item.name }}</span>
                   </el-dropdown-item>
                 </el-dropdown-menu>
@@ -66,7 +66,11 @@ import { addClass, removeClass, hasClass } from '../../config/util.js';
         type: Boolean,
         'default': true
       },
-      operationLst:{
+      needCheckBox: {
+        type:Boolean,
+        'default': true
+      },
+      operationList:{
         type: Array,
         default(){
           return [];
@@ -116,9 +120,7 @@ import { addClass, removeClass, hasClass } from '../../config/util.js';
       operationAction(action, item) {
         console.log('operationAction', action)
         const self = this;
-        if(action) {
-          self.$emit(`${action}`, item)
-        }
+        self.$emit('operationAction',{action:action,params:item})
       },
       fixedTable(event) {
       // console.log('target is', event.target);
@@ -134,35 +136,55 @@ import { addClass, removeClass, hasClass } from '../../config/util.js';
         for (let j = 0, len = fixCol.length; j < len; j++) {
           fixCol[j].style.left = left + unit;
         }
+      },
+      clearFiexdTable() {
+        const fixHd = document.querySelectorAll('.fix-hd'),
+        fixCol = document.querySelectorAll('.fix-col'),
+        unit = 'px';
+        for (let i = 0, len = fixHd.length; i < len; i++) {
+          fixHd[i].style.top = 0 + unit;
+        }
+        for (let j = 0, len = fixCol.length; j < len; j++) {
+          fixCol[j].style.left = 0 + unit;
+        }
       }
     },
+    
     mounted(){
       // 单选
-    document.querySelector('.fix-table-wrap').addEventListener('click', (event) => {
-      const target = event.target;
-      // console.log(target.nodeName);
-      if (hasClass(target, 'ck-single')) {
-        this.checkRow();
-      }
-      if (target.nodeName === 'TD') {
-        target.parentNode.childNodes[0].querySelector('.ck-single').click();
-      }
-      if (target.nodeName === 'SPAN' && target.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === 'TD') {
-        target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.childNodes[0].querySelector('.ck-single').click();
-      }
-    });
-    // 全选
-    document.querySelector('.ck-all').addEventListener('click', this.checkAll);
+      document.querySelector('.fix-table-wrap').addEventListener('click', (event) => {
+        const target = event.target;
+        // console.log(target.nodeName);
+        if (hasClass(target, 'ck-single')) {
+          this.checkRow();
+        }
+        if (target.nodeName === 'TD') {
+          target.parentNode.childNodes[0].querySelector('.ck-single').click();
+        }
+        if (target.nodeName === 'SPAN' && target.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === 'TD') {
+          target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.childNodes[0].querySelector('.ck-single').click();
+        }
+      });
+      // 全选
+      document.querySelector('.ck-all').addEventListener('click', this.checkAll);
 
-    // 重置宽度
-    document.querySelectorAll('.fix-table-wrap').forEach((value) => {
-      value.addEventListener('scroll', this.fixedTable);
-    });
+      // 重置宽度
+      document.querySelectorAll('.fix-table-wrap').forEach((value) => {
+        value.addEventListener('scroll', this.fixedTable);
+      });
 
+    },
+    deactivated() {
+      this.clearFiexdTable();
     }
+
   }
 </script>
 <style>
+ .fix-table-wrap .el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
+    background-color: #ecf5ff;
+    color: #f48400 !important;
+}
   .fix-table-wrap{
     flex: 1;
     width:100%;

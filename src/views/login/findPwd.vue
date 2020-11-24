@@ -59,10 +59,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import loginHeader from '../components/LoginHeader.vue'
-  import loginFooter from '../components/LoginFooter.vue'
-  import {hostUrl} from '../config/config.js'
-import serviceUrl from '../api/servise';
+  import loginHeader from '@/components/LoginHeader.vue'
+  import loginFooter from '@/components/LoginFooter.vue'
+  import {hostUrl} from '@/config/config.js'
+import serviceUrl from '@/api/servise';
 
   export default {
     components:{
@@ -235,14 +235,14 @@ import serviceUrl from '../api/servise';
 </script>
 
 <style lang="scss" scoped rel="stylesheet/scss">
-  @import "./../assets/scss/findPwd.scss";
-  @import "./../assets/scss/common.scss";
+  @import "../../assets/scss/findPwd.scss";
+  @import "../../assets/scss/common.scss";
   
   .formlist {
     margin: 50px;
   }
   .bg-logreg {
-    background: url(../assets/images/login/sepline.jpg) repeat-x center center
+    background: url(../../assets/images/login/sepline.jpg) repeat-x center center
     }
 
   .el-form-item {

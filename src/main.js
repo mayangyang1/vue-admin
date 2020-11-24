@@ -28,7 +28,11 @@ import {
   Checkbox,
   Dialog,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Select,
+  Option,
+  DatePicker,
+  CheckboxGroup,
 
 } from 'element-ui';
 import './assets/scss/_reset-default.scss';
@@ -128,6 +132,10 @@ Vue.use(Checkbox);
 Vue.use(Dialog);
 Vue.use(Radio);
 Vue.use(RadioGroup);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(DatePicker);
+Vue.use(CheckboxGroup)
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$message = Message;

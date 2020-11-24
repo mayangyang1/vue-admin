@@ -1,14 +1,14 @@
 
 <template>
   <div class="block" :class="['complex-control-' + field.extraParams.length]">
-    <!-- <ele-select-area
+    <ele-select-area
       v-if="field.elementCode === 'selectArea'"
       :selectAreaData="field.extraParams"
       :domainObject="domainObject"
       :isList="isList"
       :editable="editable">
     </ele-select-area>
-    <ele-quote
+    <!-- <ele-quote
       v-else-if="field.elementCode === 'quoteType'"
       :quoteData="field.extraParams"
       :domainObject="domainObject"
@@ -58,6 +58,7 @@
       :editable="editable">
     </ele-select-trailerTruck> -->
     <ele-config 
+      v-else
       :domainObject="domainObject"
       :field="param"
       :inputKey="inputKey"
@@ -71,7 +72,7 @@
 
 <script type="text/ecmascript-6">
   import eleConfig from './EleConfig.vue';
-//   import eleSelectArea from '../ele-select-area/eleSelectArea.vue';
+  import eleSelectArea from './EleSelectArea.vue';
 //   import eleQuote from '../ele-quote/eleQuote.vue';
 //   import eleGoodsLoss from '../ele-goods-loss/eleGoodsLoss.vue';
 //   import eleInfoFee from '../ele-info-fee/eleInfoFee.vue';
@@ -103,7 +104,7 @@
     },
     components: {
       'ele-config': eleConfig,
-    //   'ele-select-area': eleSelectArea,
+      'ele-select-area': eleSelectArea,
     //   'ele-quote': eleQuote,
     //   'ele-tag-select': eleTagSelect,
     //   'ele-select-viceDriver': eleSelectViceDriver,
@@ -145,5 +146,12 @@
   };
 </script>
 
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss"  rel="stylesheet/scss">
+.complex-control-2{
+  display: flex;
+  justify-content: flex-start;
+}
+.complex-control-2  .innerblock:nth-child(2){
+  margin-left: 10px;
+}
 </style>

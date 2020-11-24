@@ -14,25 +14,36 @@ export default new Router({
       children: [
         {
           path: '',
-          name: 'testPage',
-          component: () => import( /* webpackChunkName: "about" */ './views/Index.vue'),
+          name: 'index',
+          component: () => import('./views/Index.vue'),
           meta: {
             keep: true,
             title: '首页',
-            name: 'testPage',
+            name: 'index',
             icon: 'el-icon-s-home'
           }
         },
         {
           path: '/freightList',
           name: 'freightList',
-          component: () => import( /* webpackChunkName: "about" */ './views/Resource.vue'),
-           meta: {
-             keep: true,
-             title: '货源',
-             name: 'resource',
-             icon: 'el-icon-setting'
-           }
+          component: () => import('./views/freight/freight.vue'),
+          meta: {
+            keep: true,
+            title: '货源',
+            name: 'freightList',
+            icon: 'el-icon-setting'
+          }
+        },
+        {
+          path: '/addFreight',
+          name: 'addFreight',
+          component: () => import( './views/freight/add.vue'),
+          meta: {
+            keep: true,
+            title: '新增货源',
+            name: 'addFreight',
+            icon: 'el-icon-setting'
+          }
         },
         {
           path: '/404Page',
@@ -50,37 +61,37 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
+      component: () => import('./views/login/login.vue')
     },
     {
       path: '/findPwd',
       name: 'findPwd',
-      component: () => import( /* webpackChunkName: "about" */ './views/FindPwd.vue')
+      component: () => import(  './views/login/findPwd.vue')
     },
     {
       path: '/resetPwd',
       name: 'resetPwd',
-      component: () => import( /* webpackChunkName: "about" */ './views/ResetPwd.vue')
+      component: () => import( './views/login/resetPwd.vue')
     },
     {
       path: '/setPwdSuccess',
       name: 'setPwdSuccess',
-      component: () => import( /* webpackChunkName: "about" */ './views/SetPwdSuccess.vue')
+      component: () => import(  './views/login/setPwdSuccess.vue')
     },
     {
       path: '/enterprise',
       name: 'enterprise',
-      component: () => import( /* webpackChunkName: "about" */ './views/Enterprise.vue')
+      component: () => import( './views/login/enterprise.vue')
     },
     {
       path: '/registerCompany',
       name: 'registerCompany',
-      component: () => import( /* webpackChunkName: "about" */ './views/RegisterCompany.vue')
+      component: () => import( './views/login/registerCompany.vue')
     },
     {
       path: '/registerSuccess',
       name: 'registerSuccess',
-      component: () => import( /* webpackChunkName: "about" */ './views/RegisterSuccess.vue')
+      component: () => import( './views/login/registerSuccess.vue')
     },
     {
       path: '*',

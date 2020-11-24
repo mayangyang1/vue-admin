@@ -3,6 +3,15 @@
 </template>
 
 <script type="text/ecmascript-6">
+  export default {
+    data() {
+      return {
+
+      }
+    },
+    name:'index'
+     
+  }
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

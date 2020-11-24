@@ -105,10 +105,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import loginHeader from '../components/LoginHeader.vue'
-	import loginFooter from '../components/LoginFooter.vue'
-	import { hostUrl } from '../config/config.js'
-	import serviceUrl from '../api/servise.js'
+  import loginHeader from '@/components/LoginHeader.vue'
+	import loginFooter from '@/components/LoginFooter.vue'
+	import { hostUrl } from '@/config/config.js'
+	import serviceUrl from '@/api/servise.js'
   // import * as apiConst from '../../api/ApiConst';
 //   import * as registerService from '../../api/registerService';
 //   import { webapp,otherapp } from '../../api/LoginService';
@@ -467,8 +467,8 @@
 </script>
 
 <style lang="scss" scoped rel="stylesheet/scss">
-  @import "../assets/scss/common.scss";
-  @import "../assets/scss/register.scss";
+  @import "../../assets/scss/common.scss";
+  @import "../../assets/scss/register.scss";
 
   .rule-frame {
     width: 100%;

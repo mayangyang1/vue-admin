@@ -1,7 +1,7 @@
 <template>
     <el-row :span="24" class="tab-list flex-fs">
         <router-link v-for="item in tagsViewList" :key="item.name" :to="{ 'path': item.path, 'query': item.query, 'fullPath': item.fullPaht}">
-            <div class="tag-view" :class="isTagActive(item)? 'main-bg-color' : ''">
+            <div class="tag-view" :id="isTagActive(item)? 'main-bg-color' : ''">
                 <span>{{item.meta.title? item.meta.title : item.name}}</span>
                 <i class="el-icon-close" v-if="item.path !== '/'" @click.prevent="closeTag(item)"></i>
             </div>
@@ -19,7 +19,8 @@ export default {
     watch: {
         $route() {
             this.addTag();
-        }
+        },
+
     },
     methods: {
         addTag() {
@@ -61,14 +62,15 @@ export default {
         border-bottom: 1px solid #f2f2f2;
     }
     .tag-view{
-      border: 1px solid #f2f2f2;
-      border-radius: 3px;
+      /* border: 1px solid #f2f2f2; */
+      border-radius: 4px;
       margin-left: 10px;
-      padding: 5px 10px;
+      padding: 6px 10px;
       font-size: 14px;
       cursor: pointer;
       background-color: #fff;
       color: #454545;
+      box-shadow: 1px 1px #ccc;
     }
     .el-icon-close{
         padding-left: 4px;
