@@ -29,7 +29,7 @@
     <el-form-item :prop="countyFieldName" :rules="countyFieldRule">
       <!--<el-input v-model='ruleForm.county' placeholder="请选择区" name="county"></el-input>-->
       <el-select v-model="domainObject[countyFieldName]" placeholder="请选择区"
-                 :disabled="this.selectAreaData[2].readonly === 'TRUE'">
+        :disabled="this.selectAreaData[2].readonly === 'TRUE'">
         <el-option
           v-for="item in county"
           :key="item.id"
@@ -96,42 +96,42 @@
     methods: {
       initValRules(){
 
-          if (!this.isList) {
-                this.provinceFieldRule = [];
-                this.cityFieldRule = [];
-                this.countyFieldRule = [];
-        // if (this.selectAreaData[0].inputKey) {
-        //   dealInputKey(this.selectAreaData[0].inputKey, (inputFieldKey, outData) => {
-        //     this.domainObject[this.selectAreaData[0].field] = outData[inputFieldKey];
-        //   });
-        // }
+        if (!this.isList) {
+            this.provinceFieldRule = [];
+            this.cityFieldRule = [];
+            this.countyFieldRule = [];
+          // if (this.selectAreaData[0].inputKey) {
+          //   dealInputKey(this.selectAreaData[0].inputKey, (inputFieldKey, outData) => {
+          //     this.domainObject[this.selectAreaData[0].field] = outData[inputFieldKey];
+          //   });
+          // }
 
-        if (this.selectAreaData[0].required === 'true') {
-          this.provinceFieldRule.push({required: true, trigger: 'change', message: '不能为空'});
+          if (this.selectAreaData[0].required === 'true') {
+            this.provinceFieldRule.push({required: true, trigger: 'change', message: '不能为空'});
+          }
+
+          // if (this.selectAreaData[1].inputKey) {
+          //   dealInputKey(this.selectAreaData[1].inputKey, (inputFieldKey, outData) => {
+          //     this.domainObject[this.selectAreaData[1].field] = outData[inputFieldKey];
+          //   });
+          // }
+
+          if (this.selectAreaData[1].required === 'true') {
+            this.cityFieldRule.push({required: true, trigger: 'change', message: '不能为空'});
+          }
+
+          // if (this.selectAreaData[2].inputKey) {
+          //   dealInputKey(this.selectAreaData[2].inputKey, (inputFieldKey, outData) => {
+          //     this.domainObject[this.selectAreaData[2].field] = outData[inputFieldKey];
+          //   });
+          // }
+
+          if (this.selectAreaData[2].required === 'true') {
+            this.countyFieldRule.push({required: true, trigger: 'change', message: '不能为空'});
+          }
         }
-
-        // if (this.selectAreaData[1].inputKey) {
-        //   dealInputKey(this.selectAreaData[1].inputKey, (inputFieldKey, outData) => {
-        //     this.domainObject[this.selectAreaData[1].field] = outData[inputFieldKey];
-        //   });
-        // }
-
-        if (this.selectAreaData[1].required === 'true') {
-          this.cityFieldRule.push({required: true, trigger: 'change', message: '不能为空'});
-        }
-
-        // if (this.selectAreaData[2].inputKey) {
-        //   dealInputKey(this.selectAreaData[2].inputKey, (inputFieldKey, outData) => {
-        //     this.domainObject[this.selectAreaData[2].field] = outData[inputFieldKey];
-        //   });
-        // }
-
-        if (this.selectAreaData[2].required === 'true') {
-          this.countyFieldRule.push({required: true, trigger: 'change', message: '不能为空'});
-        }
-      }
-
       },
+
       init() {
 
       },
@@ -144,7 +144,7 @@
         return -1;
       },
       provinceChange(item) {
-//        console.log('selectArea.provinceChange', item);
+       console.log('selectArea.provinceChange', item);
         DataSourceService.city.getData({ keyword: item }, (dataSource) => {
           this.city = dataSource;
           const index = this.indexOf(this.domainObject[this.cityFieldName], this.city);
@@ -157,7 +157,7 @@
         });
       },
       cityChange(item) {
-//        console.log('selectArea.cityChange', item);
+       console.log('selectArea.cityChange', item);
         DataSourceService.county.getData({ keyword: item }, (dataSource) => {
           this.county = dataSource;
           const index = this.indexOf(this.domainObject[this.countyFieldName], this.county);
@@ -170,12 +170,12 @@
     beforeCreate() {
     },
   watch: {
-    selectAreaData: {
+    domainObject: {
       deep: true,
       handler(newVal, oldVal) {
-         if (!this.isList) {
-           this.initValRules();
-         }
+         if (this.domainObject[this.provinceFieldName]) {
+          this.provinceChange(this.domainObject[this.provinceFieldName]);
+        }
       }
     }
   },
@@ -201,8 +201,8 @@
 
     //   } 
     },
-
-    created() {
+  
+    mounted() {
     //   if (!this.isList) {
     //     if (this.eventBus) {
     //       this.eventBus.$emit('eleCreated', this,this.selectAreaData[0].field);
@@ -214,7 +214,7 @@
       this.cityFieldName = this.selectAreaData[1].field;
       this.countyFieldName = this.selectAreaData[2].field;
 
-      this.initValRules();
+      // this.initValRules();
 
 //      console.log('provinceFieldName', this.provinceFieldName, 'cityFieldName', this.cityFieldName, 'countyFieldName', this.countyFieldName);
       DataSourceService.province.getData('', (dataSource) => {

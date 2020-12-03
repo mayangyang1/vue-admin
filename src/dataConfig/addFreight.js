@@ -1,7 +1,7 @@
 
 function domainObject() {
   return {
-    "scheduleType": null,
+    "scheduleType": 'platform',
     "freightNo": null,
     "code": null,
     "status": "pushling",
@@ -28,8 +28,8 @@ function domainObject() {
     "truckLengthRequire": null,
     "truckQty": null,
     "truckQtyUnitCode": "车",
-    "contactUserFullName": "张智",
-    "contactPhone": "17621551677",
+    "contactUserFullName": "",
+    "contactPhone": "",
     "freightEndTime": "",
     "description": null,
     "publishUserFullName": null,

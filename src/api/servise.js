@@ -21,6 +21,10 @@ const serviceUrl = {
     freightList: hostUrl + '/freight/freight/list', //货源列表,
     areaInfo: hostUrl + '/person/area/map/get',//省市区数组对象
     truckModelList: hostUrl + '/platform/truck_model/list',//车型要求列表
+    orgPartnerList: hostUrl + '/org/partner/list',//伙伴列表
+    routeLlist: hostUrl + '/resource/resource/route/list',//线路列表
+    logisticsList: hostUrl + '/logistics/logistics/list', //订单列表
+    
     
 }
 

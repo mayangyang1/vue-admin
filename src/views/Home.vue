@@ -148,6 +148,8 @@ export default {
  }
  .app-page-view{
    flex: 1;
+   max-height: 800px;
+   overflow-y: auto;
  }
  .footer{
    background-color: #f2f2f2;

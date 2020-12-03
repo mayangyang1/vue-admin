@@ -16,6 +16,11 @@ const releaseRange = {//发布范围
     designated: '指定范围',
     private: '不公开',
 }
+const orgCertStatusStatus = { //公司认证状态
+    authenticated: '已认证',
+    unauthenticated: '未认证',
+    authenticating: '认证中',
+}
 function getAreaName(provinceCode, cityCode, countyCode) {
     const areaInfo = JSON.parse(localStorage.getItem('areaInfo'));
     let provinceName = areaInfo['province'][provinceCode];
@@ -34,19 +39,23 @@ const meterageUnitConfig = {
             'yuanpertruck': '元/车'
         },
         'driver.price': [{
-                name: '元/方',
+                value: '元/方',
                 id: 'yuanpercube'
             },
             {
-                name: '元/车',
+                value: '元/车',
                 id: 'yuanpertruck'
             }
         ],
         'goods.loss': {
             'cube': '方/车'
         },
+        'goods.loss.ration': {
+            value: '方/车',
+            id: 'ton'
+        },
         'goods.price': {
-            name: '元/方',
+            value: '元/方',
             id: 'yuanpercube'
         },
         'goods.volume': {
@@ -69,22 +78,26 @@ const meterageUnitConfig = {
             'yuanpertruck': '元/车'
         },
         'driver.price': [{
-                name: '元/件',
+                value: '元/件',
                 id: 'yuanperitem'
             },
             {
-                name: '元/车',
+                value: '元/车',
                 id: 'yuanpertruck'
             }
         ],
         'goods.loss': {
             'item': '件/车'
         },
+        'goods.loss.ration': {
+            value: '件/车',
+            id: 'ton'
+        },
         'goods.number': {
             'item': '件'
         },
         'goods.price': {
-            name: '元/件',
+            value: '元/件',
             id: 'yuanperitem'
         },
         'settle.volume.unit': {
@@ -101,19 +114,24 @@ const meterageUnitConfig = {
             'yuanpertruck': '元/车'
         },
         'driver.price': [{
-                name: '元/吨',
+                value: '元/吨',
                 id: 'yuanperton'
             },
             {
-                name: '元/车',
+                value: '元/车',
                 id: 'yuanpertruck'
             }
         ],
         'goods.loss': {
             'ton': '吨/车'
         },
+        'goods.loss.ration':
+        {
+            value: '吨/车',
+            id: 'ton'
+        },
         'goods.price': {
-            name: '元/吨',
+            value: '元/吨',
             id: 'yuanperton'
         },
         'goods.weight': {
@@ -135,4 +153,5 @@ export {
     releaseRange,
     getAreaName,
     meterageUnitConfig,
+    orgCertStatusStatus
 }

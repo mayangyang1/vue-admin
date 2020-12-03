@@ -157,9 +157,10 @@ export default {
   }
   .ele-pop-select.ele-pop-select {
     margin-left: 10px;
+    margin-bottom: 7px;
     .button{
       border: 1px solid #ccc;
-      padding: 3px 6px;
+      padding: 3px 4px;
       width: 50px;
       cursor: pointer;
       border-radius: 4px;
